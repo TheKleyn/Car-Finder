@@ -6,7 +6,7 @@ const carArray = [
         year: 2022,
         drive: ['FWD', 'AWD'],
         LKA: true,
-        laneCenter: [false],
+        laneCenter: false,
         handsFree: false,
         style: 'sedan',
         zeroSixty: 7.5 
@@ -18,7 +18,7 @@ const carArray = [
         year: 2022,
         drive: ['FWD', 'AWD'],
         LKA: true,
-        laneCenter: 'yes',
+        laneCenter: true,
         handsFree: true,
         style: 'SUV',
         zeroSixty: 3.7 
@@ -30,7 +30,7 @@ const carArray = [
         year: 2022,
         drive: ['FWD'],
         LKA: true,
-        laneCenter: 'yes',
+        laneCenter: true,
         handsFree: false,
         style: 'sedan',
         zeroSixty: 6.4 
@@ -40,16 +40,16 @@ const carArray = [
 
 const userCar = [
     {
-        brand: 'Ford',
-        model: 'Mustang Mach E',
-        trim: 'base',
+        brand: undefined,
+        model: undefined,
+        trim: undefined,
         year: 2022,
-        drive: ['FWD', 'AWD'],
+        drive: undefined,
         LKA: true,
-        laneCenter: 'yes',
-        handsFree: true,
+        laneCenter: true,
+        handsFree: undefined,
         style: 'SUV',
-        zeroSixty: 3.7 
+        zeroSixty: undefined 
     }
 ]
 /*
@@ -75,8 +75,23 @@ const findCar = (userCar, carArray) => {
 //console.log((Object.values(userCar)));
 
 
+//(Object.values(carArray) === Object.values(userCar)) || (Object.values(userCar) === undefined))
 
-const result = carArray.filter(x => userCar.some(y => (x.laneCenter === y.laneCenter) || (y.laneCenter === undefined)));
+/*var newArray = carArray.filter(
+    price <= 1000 & 
+    sqft >= 500 & 
+    num_of_beds >=2 & 
+    num_of_baths >= 2.5 );*/
+
+var newCarArray = carArray.filter(
+   
+    style = 'SUV'
+    );
+
+console.log(newCarArray);
+
+
+const result = carArray.filter(x => userCar.some(y => (x.Object.values(carArray) === y.Object.values(userCar)) || (y.Object.values(userCar) === undefined)));
 console.log('result test below')
 console.log(result);
 
@@ -103,6 +118,9 @@ const findCar = (userCar, carArray) => {
     console.log(filteredArray);
 };
 
+
+findCar(userCar, carArray);
+
 const testCompare = (userCar, carArray) => {
     if ((Object.values(carArray) === Object.values(userCar)) || (Object.values(userCar) === undefined)) {
         console.log('its a match')
@@ -113,9 +131,6 @@ const testCompare = (userCar, carArray) => {
 
 testCompare(userCar, carArray[1]);
 
-
-
-findCar(userCar, carArray);
 
 
 
