@@ -27,7 +27,7 @@ const carArray = [
         brand: 'KIA',
         model: 'Forte',
         trim: 'GT',
-        year: 2022,
+        year: 2023,
         drive: ['FWD'],
         LKA: true,
         laneCenter: true,
@@ -44,12 +44,13 @@ const userCar = {
         year: 2022,
         drive: undefined,
         LKA: true,
-        laneCenter: true,
+        laneCenter: undefined,
         handsFree: undefined,
-        style: 'SUV',
+        style: undefined,
         zeroSixty: undefined 
 };
 
+/*
 // First we make a function that lets us check that defined properties match.
 // First, use Object.entries to get an array of all keys and values, which looks like this:
 // [['brand', 'Mazda']
@@ -78,24 +79,26 @@ const matchingCars = carArray.filter(filterToDefinedAndMatching);
 console.log(matchingCars);
 
 // Add the fords drive:
-userCar.drive = ['FWD', 'AWD'];
+//userCar.drive = ['FWD', 'AWD'];
 
 // This will log an empty array:
-console.log(carArray.filter(filterToDefinedAndMatching));
+//console.log(carArray.filter(filterToDefinedAndMatching));
 
 // This is because equality on arrays checks if they are the same array, not if their contents are the same.
 // The ford's drive array is created on line 19, the users on line 81, so they are not the same but two separate
 // arrays with the same contents. Look into value vs reference if you don't understand this. So to fix this,
-// we need a deeper level of checking:
+// we need a deeper level of checking: */
 function betterFilterToMatchCars(car) {
   return Object.entries(car).every(([key, value]) => {
     const userCarValue = userCar[key];
 
   	if (Array.isArray(userCarValue)) {
 			return userCarValue.every(item => value.includes(item));
+		} else if (typeof userCarValue === 'number') {
+			return userCarValue >= value;
 		} else {
-			return !userCarValue || userCarValue == value;
-		}
+      return !userCarValue || userCarValue == value;
+    }
   });
 }
 
