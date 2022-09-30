@@ -8,7 +8,7 @@ const carArray = [
         LKA: true,
         laneCenter: false,
         handsFree: false,
-        style: 'sedan',
+        style: ['sedan'],
         zeroSixty: 7.5 
     },
     {
@@ -16,23 +16,23 @@ const carArray = [
         model: 'Mustang Mach E',
         trim: 'base',
         year: 2022,
-        drive: ['FWD', 'AWD'],
+        drive: ['fwd', 'awd'],
         LKA: true,
         laneCenter: true,
         handsFree: true,
-        style: 'SUV',
+        style: ['suv'],
         zeroSixty: 3.7 
     },
     {
         brand: 'KIA',
         model: 'Forte',
         trim: 'GT',
-        year: 2023,
-        drive: ['FWD'],
+        year: 2022,
+        drive: ['fwd'],
         LKA: true,
         laneCenter: true,
         handsFree: false,
-        style: 'sedan',
+        style: ['sedan'],
         zeroSixty: 6.4 
     },
 ];
@@ -42,12 +42,12 @@ const userCar = {
         model: undefined,
         trim: undefined,
         year: 2022,
-        drive: undefined,
+        drive: ['fwd', 'awd'],
         LKA: true,
         laneCenter: undefined,
         handsFree: undefined,
-        style: undefined,
-        zeroSixty: undefined 
+        style: ['suv', 'sedan', 'truck', 'electric', 'hatchback', 'hybrid'],
+        zeroSixty: 7 
 };
 
 /*
@@ -93,7 +93,7 @@ function betterFilterToMatchCars(car) {
     const userCarValue = userCar[key];
 
   	if (Array.isArray(userCarValue)) {
-			return userCarValue.every(item => value.includes(item));
+			return userCarValue.some(item => value.includes(item));
 		} else if (typeof userCarValue === 'number') {
 			return userCarValue >= value;
 		} else {
